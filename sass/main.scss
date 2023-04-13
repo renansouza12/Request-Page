@@ -1,1 +1,5 @@
 @use 'base';
+
+body{
+    background-color: base.$backgroundColor ;
+}

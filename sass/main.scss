@@ -3,3 +3,21 @@
 body{
     background-color: base.$backgroundColor ;
 }
+.header{
+    padding: 1rem;
+    border-bottom: 1px solid base.$dark-gray;
+
+    .title{
+        display: flex;
+        gap: 1rem;
+
+        h1{
+            color: base.$text;
+        }
+        svg{
+            color: base.$text;
+            width: 1rem;
+            cursor: pointer;
+        }
+    }
+}

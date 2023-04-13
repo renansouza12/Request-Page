@@ -11,4 +11,21 @@ body {
   background-color: #f0efeb;
 }
 
+.header {
+  padding: 1rem;
+  border-bottom: 1px solid #979dac;
+}
+.header .title {
+  display: flex;
+  gap: 1rem;
+}
+.header .title h1 {
+  color: #353535;
+}
+.header .title svg {
+  color: #353535;
+  width: 1rem;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=styles.css.map */

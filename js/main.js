@@ -13,8 +13,9 @@ formTitle.addEventListener('submit',formNewTitle);
 
 //function to add and remove class "active" to the class "new_title" 
 function changeTitle(e){
-    formTitle.classList.toggle('active');
 
+    formTitle.classList.toggle('active');
+    currentTitle.classList.toggle('active');
 }
 
 //function to remove class active to the class "new_title"  when clicked outside
@@ -23,6 +24,7 @@ function removeChangeTitle(e){
     // validation in case the  click event  was clicked outside
     if(!btn_edit.contains(e.target) && !formTitle.contains(e.target)){
         formTitle.classList.remove('active');
+        currentTitle.classList.remove('active');
     }
     
 }

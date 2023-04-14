@@ -10,7 +10,15 @@ body{
     .title{
         display: flex;
         gap: 1rem;
-
+            
+        #title{
+            transition:  all 1s;
+            border-radius: 0.2rem;
+        }
+        #title.active{
+            
+            background-color: base.$white;
+        }
 
         h1{
             color: base.$text;
@@ -37,7 +45,7 @@ body{
             padding: 1rem;
             position: absolute;
             left: 2%;
-            top: 13%;
+            top: 15%;
             animation: smoth 0.3s forwards;
 
             h3{
@@ -52,6 +60,11 @@ body{
                 font-size: 1rem;
                 margin-top: 0.5rem;
                 padding: 0.2rem 0.5rem;
+
+            }
+            .input_title::placeholder{
+                color: base.$black;
+                opacity: 0.4;
             }
 
             
@@ -76,4 +89,5 @@ body{
        }
 
     }
+    
 }

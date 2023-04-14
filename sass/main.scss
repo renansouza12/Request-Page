@@ -11,13 +11,69 @@ body{
         display: flex;
         gap: 1rem;
 
+
         h1{
             color: base.$text;
+            padding: 0.5rem 1rem;
         }
-        svg{
-            color: base.$text;
-            width: 1rem;
-            cursor: pointer;
+
+        .icon_edit{
+            svg{
+                color: base.$text;
+                width: 1rem;
+                cursor: pointer;
+
+            }
         }
+
+        .new_title{
+            display: none;
+            position: relative;
+            background-color: base.$white;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            width: 14rem;
+            height: 5rem;
+            border-radius: 0.3rem;
+            padding: 1rem;
+            position: absolute;
+            left: 2%;
+            top: 13%;
+            animation: smoth 0.3s forwards;
+
+            h3{
+                color: base.$text   ;
+            }
+            .input_title{
+                width: 100%;
+                border: 1px solid base.$black;
+                border-radius: 0.1rem;
+                outline: none;
+                color: base.$text;
+                font-size: 1rem;
+                margin-top: 0.5rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            
+       @keyframes smoth {
+        0%{transform: translateY(-40px);}
+        100%{transform: translateY(0px);}
+       }
+          
+        }
+        .new_title::after{
+            position: absolute;
+            content: '';
+            top: -0.4rem;
+            left: 0.5rem;
+            height: 0.8rem;
+            width: 0.8rem;
+            background-color: base.$white;
+            rotate: 45deg;
+        }        
+       .new_title.active{
+        display: block;
+       }
+
     }
 }

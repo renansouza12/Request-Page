@@ -21,11 +21,60 @@ body {
 }
 .header .title h1 {
   color: #353535;
+  padding: 0.5rem 1rem;
 }
-.header .title svg {
+.header .title .icon_edit svg {
   color: #353535;
   width: 1rem;
   cursor: pointer;
+}
+.header .title .new_title {
+  display: none;
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 14rem;
+  height: 5rem;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  position: absolute;
+  left: 2%;
+  top: 13%;
+  animation: smoth 0.3s forwards;
+}
+.header .title .new_title h3 {
+  color: #353535;
+}
+.header .title .new_title .input_title {
+  width: 100%;
+  border: 1px solid #000000;
+  border-radius: 0.1rem;
+  outline: none;
+  color: #353535;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.5rem;
+}
+@keyframes smoth {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.header .title .new_title::after {
+  position: absolute;
+  content: "";
+  top: -0.4rem;
+  left: 0.5rem;
+  height: 0.8rem;
+  width: 0.8rem;
+  background-color: #ffffff;
+  rotate: 45deg;
+}
+.header .title .new_title.active {
+  display: block;
 }
 
 /*# sourceMappingURL=styles.css.map */

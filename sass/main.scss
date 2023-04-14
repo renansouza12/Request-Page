@@ -28,7 +28,7 @@ body{
         .icon_edit{
             svg{
                 color: base.$text;
-                width: 1rem;
+                width: 1rem;    
                 cursor: pointer;
 
             }
@@ -92,19 +92,21 @@ body{
     
 }
 .main_request{
-
+    display: flex;
+    gap: 1rem;
     padding: 1rem;
     height: 100vh;
 
-    .request_new_container{
+    .request_container{
 
         height: 35rem;
         width: 18rem;
 
-        .request_new_title{
+        .request_title{
 
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 1rem;
             
             .request_title{
@@ -118,6 +120,18 @@ body{
                     background-color: base.$black;
                     border-radius: 1rem;
                 }
+                .bar_progress{
+                    background-color: base.$blue;
+                }
+                .bar_await{
+                    background-color: base.$yellow;
+                }
+                .bar_done{
+                    background-color:  base.$green;
+                }
+                .bar_closed{
+                    background-color: base.$Light-gray;
+                }
                 h3{
                     color: base.$text;
                     font-weight: 500;
@@ -127,8 +141,13 @@ body{
             .icon_add{
                 background-color: base.$purple ;
                 border-radius: 0.2rem;
+                height: 1.4rem;
+                width: 1.4rem;
+                display: grid;
+                place-content: center;
+
                 svg{
-                    width: 2rem;
+                    width: 1.3rem;
                     cursor: pointer;
                     color: base.$white;
                 }
@@ -138,4 +157,6 @@ body{
             height: 100%;
         }
     }
+
+  
 }

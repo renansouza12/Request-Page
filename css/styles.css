@@ -89,43 +89,62 @@ body {
 }
 
 .main_request {
+  display: flex;
+  gap: 1rem;
   padding: 1rem;
   height: 100vh;
 }
-.main_request .request_new_container {
+.main_request .request_container {
   height: 35rem;
   width: 18rem;
 }
-.main_request .request_new_container .request_new_title {
+.main_request .request_container .request_title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
 }
-.main_request .request_new_container .request_new_title .request_title {
+.main_request .request_container .request_title .request_title {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.main_request .request_new_container .request_new_title .request_title .bar {
+.main_request .request_container .request_title .request_title .bar {
   height: 0.5rem;
   width: 1.5rem;
   background-color: #000000;
   border-radius: 1rem;
 }
-.main_request .request_new_container .request_new_title .request_title h3 {
+.main_request .request_container .request_title .request_title .bar_progress {
+  background-color: #0466c8;
+}
+.main_request .request_container .request_title .request_title .bar_await {
+  background-color: #fcbf49;
+}
+.main_request .request_container .request_title .request_title .bar_done {
+  background-color: #52b788;
+}
+.main_request .request_container .request_title .request_title .bar_closed {
+  background-color: #dbdbdb;
+}
+.main_request .request_container .request_title .request_title h3 {
   color: #353535;
   font-weight: 500;
 }
-.main_request .request_new_container .request_new_title .icon_add {
+.main_request .request_container .request_title .icon_add {
   background-color: #6246ea;
   border-radius: 0.2rem;
+  height: 1.4rem;
+  width: 1.4rem;
+  display: grid;
+  place-content: center;
 }
-.main_request .request_new_container .request_new_title .icon_add svg {
-  width: 2rem;
+.main_request .request_container .request_title .icon_add svg {
+  width: 1.3rem;
   cursor: pointer;
   color: #ffffff;
 }
-.main_request .request_new_container .card_zone {
+.main_request .request_container .card_zone {
   height: 100%;
 }
 

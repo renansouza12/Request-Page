@@ -44,3 +44,6 @@ function formNewTitle(e){
 
     e.preventDefault();
 }
+
+
+const btnAdd = document.querySelector('.icon_add');

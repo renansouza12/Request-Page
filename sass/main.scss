@@ -91,3 +91,51 @@ body{
     }
     
 }
+.main_request{
+
+    padding: 1rem;
+    height: 100vh;
+
+    .request_new_container{
+
+        height: 35rem;
+        width: 18rem;
+
+        .request_new_title{
+
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            
+            .request_title{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                .bar{
+                    height: 0.5rem;
+                    width: 1.5rem;
+                    background-color: base.$black;
+                    border-radius: 1rem;
+                }
+                h3{
+                    color: base.$text;
+                    font-weight: 500;
+                }
+              
+            }
+            .icon_add{
+                background-color: base.$purple ;
+                border-radius: 0.2rem;
+                svg{
+                    width: 2rem;
+                    cursor: pointer;
+                    color: base.$white;
+                }
+            }
+        }
+        .card_zone{
+            height: 100%;
+        }
+    }
+}

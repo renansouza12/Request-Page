@@ -31,7 +31,6 @@ function removeChangeTitle(e){
 
 // function to add the input value to the current title and clean the input 
 function formNewTitle(e){  
-
     
     const inputTitle = document.querySelector('.input_title');
 
@@ -45,16 +44,24 @@ function formNewTitle(e){
     e.preventDefault();
 }
 
-
+let countCard = 0;
 const btnAdd = document.querySelector('.icon_add');
-
-
 btnAdd.addEventListener('click', addCard);
 
 const  cardZone = document.querySelector('.cards');   
-
+const numberCard = document.querySelector('.number_card');
+const cardContainer =  document.querySelector('.card_zone');
 
 function addCard(){
+    countCard++;
+
+    numberCard.innerHTML = countCard;
+
+    if(countCard >=3){
+        cardContainer.style.overflowY = 'scroll'; 
+    }
+
+
     cardZone.innerHTML += `
     <div class="card">
         <div class="card_header">
@@ -69,16 +76,23 @@ function addCard(){
     <textarea id="card_area" cols="30" rows="10" placeholder="Write here"></textarea>
   </div> 
         `
-        
+
+
     const btn_delets = document.querySelectorAll('.icon_remove');
 
     btn_delets.forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
-
-      
+    
 }   
 
 function removeCard(){
     this.parentNode.parentNode.remove();
+    countCard --;
+    numberCard.innerHTML = countCard;
+    
+    if(countCard < 3){
+        cardContainer.style.overflowY = 'hidden'; 
+    }
+
 }
 
 

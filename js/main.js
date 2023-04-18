@@ -47,23 +47,26 @@ function formNewTitle(e){
 let countCard = 0;
 const btnAdd = document.querySelector('.icon_add');
 btnAdd.addEventListener('click', addCard);
-
-const  cardZone = document.querySelector('.cards');   
+ 
 const numberCard = document.querySelector('.number_card');
 const cardContainer =  document.querySelector('.card_zone');
+const Allcards = document.querySelectorAll('.cards');
+
+
+let cardCurrent ;
 
 function addCard(){
     countCard++;
 
     numberCard.innerHTML = countCard;
 
-    if(countCard >=3){
+    if(countCard >=4){
         cardContainer.style.overflowY = 'scroll'; 
     }
 
 
-    cardZone.innerHTML += `
-    <div class="card">
+    cardContainer.innerHTML += `
+    <div class="card" draggable='true' >
         <div class="card_header">
             <input type="text" class="title_card" placeholder="Title">
             <div class="icon_remove" title="remove Card">
@@ -79,17 +82,46 @@ function addCard(){
 
 
     const btn_delets = document.querySelectorAll('.icon_remove');
-
     btn_delets.forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
-    
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('dragstart',dragstart);
+        card.addEventListener('dragend', dragend);
+    })
+
 }   
+function dragstart(e){
+    dropzone.forEach(dropzone => dropzone.classList.add('active'));
+    cardCurrent = e.target;
+}
+
+function dragend(){
+     dropzone.forEach(dropzone => dropzone.classList.remove('active'));
+}
+
+const dropzone = document.querySelectorAll('.card_zone');
+
+dropzone.forEach(dropzone =>{
+    dropzone.addEventListener('dragover',dragover);
+    dropzone.addEventListener('dragleave',dragleave);
+})
+
+function dragover(){
+    this.classList.add('over');
+    const zones = document.querySelectorAll('.cards');
+    this.appendChild(cardCurrent)
+}
+function dragleave(){
+    this.classList.remove('over');
+}
 
 function removeCard(){
     this.parentNode.parentNode.remove();
     countCard --;
     numberCard.innerHTML = countCard;
     
-    if(countCard < 3){
+    if(countCard < 4){
         cardContainer.style.overflowY = 'hidden'; 
     }
 

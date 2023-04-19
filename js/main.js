@@ -44,27 +44,21 @@ function formNewTitle(e){
     e.preventDefault();
 }
 
-let countCard = 0;
+
 const btnAdd = document.querySelector('.icon_add');
 btnAdd.addEventListener('click', addCard);
  
-const numberCard = document.querySelector('.number_card');
+const numberCard = document.querySelector('.number_card'); 
 const cardContainer =  document.querySelector('.card_zone');
 const Allcards = document.querySelectorAll('.cards');
+const dropzone = document.querySelectorAll('.card_zone');
+const AllnumberCards = document.querySelectorAll('.number_card');
 
-
-let cardCurrent ;
+let cardCurrent ; 
 
 function addCard(){
-    countCard++;
-
-    numberCard.innerHTML = countCard;
-
-    if(countCard >=4){
-        cardContainer.style.overflowY = 'scroll'; 
-    }
-
-
+      numberCard.innerHTML = cardContainer.children.length;
+    
     cardContainer.innerHTML += `
     <div class="card" draggable='true' >
         <div class="card_header">
@@ -78,8 +72,10 @@ function addCard(){
         </div>
     <textarea id="card_area" cols="30" rows="10" placeholder="Write here"></textarea>
   </div> 
-        `
-
+        `   
+        dropzone.forEach((zone, index)=>{
+            AllnumberCards[index].innerHTML = zone.children.length;
+        })
 
     const btn_delets = document.querySelectorAll('.icon_remove');
     btn_delets.forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
@@ -94,13 +90,13 @@ function addCard(){
 function dragstart(e){
     dropzone.forEach(dropzone => dropzone.classList.add('active'));
     cardCurrent = e.target;
+
 }
 
 function dragend(){
      dropzone.forEach(dropzone => dropzone.classList.remove('active'));
+    
 }
-
-const dropzone = document.querySelectorAll('.card_zone');
 
 dropzone.forEach(dropzone =>{
     dropzone.addEventListener('dragover',dragover);
@@ -110,7 +106,11 @@ dropzone.forEach(dropzone =>{
 function dragover(){
     this.classList.add('over');
     const zones = document.querySelectorAll('.cards');
-    this.appendChild(cardCurrent)
+    this.appendChild(cardCurrent);
+    
+    dropzone.forEach((zone, index)=>{
+        AllnumberCards[index].innerHTML = zone.children.length;
+    })
 }
 function dragleave(){
     this.classList.remove('over');
@@ -118,12 +118,10 @@ function dragleave(){
 
 function removeCard(){
     this.parentNode.parentNode.remove();
-    countCard --;
-    numberCard.innerHTML = countCard;
     
-    if(countCard < 4){
-        cardContainer.style.overflowY = 'hidden'; 
-    }
+    dropzone.forEach((zone, index)=>{
+        AllnumberCards[index].innerHTML = zone.children.length;
+    })
 
 }
 

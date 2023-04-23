@@ -14,6 +14,8 @@ body {
 .header {
   padding: 1rem;
   border-bottom: 1px solid #979dac;
+  display: flex;
+  justify-content: space-between;
 }
 .header .title {
   display: flex;
@@ -87,6 +89,20 @@ body {
 }
 .header .title .new_title.active {
   display: block;
+}
+.header .dark_mode .toggle {
+  height: 3rem;
+  width: 6rem;
+  background: url("https://cdn.dribbble.com/users/3178178/screenshots/9776963/media/a0663d51aad1c1528fe3a57e85bf3ed0.jpg?compress=1&resize=1000x750&vertical=top") center/cover;
+  border-radius: 2rem;
+}
+.header .dark_mode .toggle .indicator {
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  background-color: #f0efeb;
+  border-radius: 50%;
+  scale: 0.9;
 }
 
 .main_request {

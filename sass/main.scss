@@ -178,21 +178,31 @@ body{
                 border-radius: 0.2rem;
                 padding: 0.5rem;
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
+                position: relative;
+                user-select: none;
 
                 .card_header{
                     display: flex;
                     justify-content: space-between;
-                    border-bottom: 1px solid base.$Light-gray;
-
+                    
                     
                     .title_card{
+                        cursor: not-allowed;
+                        color: base.$text;
                         outline: none;
                         font-size: 1rem;
                         width: 100%;
                         padding: 0.5rem;
-
+                        transition: all 0.5s;
+                        user-select: none;
+                    
                     }
+                    .title_card.active{
+                        cursor: default;
+                        animation: title 2s 1s forwards;
+                        color: base.$white;
+                    }
+
                     .icon_remove{
                         display: grid;
                         place-content: center;
@@ -205,18 +215,74 @@ body{
                     }
                 }
                 #card_area{
+                    
+                    cursor:not-allowed;
                     padding: 0 0.5rem;
                     margin-top: 0.4rem;
                     outline: none;
                     resize: none;
                     width: 100%;
-                    height: 80%;
-
+                    height: 60%;
+                   
+                    
                 }
+                #card_area.active{
+                    color: base.$white;
+                    animation: area 2s forwards;
+                }
+              
+                .edit_card{
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
 
+                    .edit{
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: base.$purple;
+                        color: base.$white;
+                        padding: 0.5rem;
+                        border-radius: 1rem;
+
+                        svg
+                        {
+                            width: 1rem;
+                        }
+                        span{
+                            margin-left: 0.5rem;
+                            letter-spacing: 1px;
+                        }
+                    }
+                   
+                }
                
             }
-
+            @keyframes title {
+                0%{
+                    clip-path: 
+                    circle(0%);
+                }
+                100%{
+                    background-color: base.$dark-gray;
+                    clip-path: circle(100%);
+                }
+               
+               
+            }
+            @keyframes area {
+                0%{
+                    clip-path: 
+                    circle(0%);
+                }
+                100%{
+                    background-color: base.$dark-gray;
+                    clip-path: circle(100% at 40% 100%);
+                }
+               
+               
+            }
         }
         ::-webkit-scrollbar {
             width: 10px;

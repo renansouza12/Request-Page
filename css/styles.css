@@ -93,8 +93,10 @@ body {
 .header .dark_mode .toggle {
   height: 3rem;
   width: 6rem;
-  background: url("https://cdn.dribbble.com/users/3178178/screenshots/9776963/media/a0663d51aad1c1528fe3a57e85bf3ed0.jpg?compress=1&resize=1000x750&vertical=top") center/cover;
+  background: url(/public/day-bg.webp) center/cover;
   border-radius: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: all 0.5s;
 }
 .header .dark_mode .toggle .indicator {
   cursor: pointer;
@@ -102,7 +104,15 @@ body {
   width: 3rem;
   background-color: #f0efeb;
   border-radius: 50%;
-  scale: 0.9;
+  transform: scale(0.9);
+  transition: all 0.5s;
+}
+.header .dark_mode .toggle .indicator.active {
+  transform: scale(0.9) translateX(50px);
+  background-color: #444;
+}
+.header .dark_mode .toggle.active {
+  background: url("/public/night-bg.webp") center/cover;
 }
 
 .main_request {

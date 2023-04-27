@@ -31,15 +31,21 @@ function removeChangeTitle(e){
 
 // function to add the input value to the current title and clean the input 
 function formNewTitle(e){  
-    
     const inputTitle = document.querySelector('.input_title');
 
     // validation in case  input is empty 
-    inputTitle.value < 1 ? alert('Name Invalid 🚨‼️🟠') : currentTitle.innerHTML = inputTitle.value;
+    inputTitle.value < 1 ? alert('Name Invalid 🚨‼️🟠') : currentTitle.innerHTML= inputTitle.value;
     
-
+    localStorage.setItem('title',inputTitle.value)
+    
     //clean the input 
     inputTitle.value = '';
 
     e.preventDefault();
 }
+
+function loadTitle(){
+    const newTitle = localStorage.getItem('title');
+    currentTitle.innerHTML = newTitle;
+}
+loadTitle();

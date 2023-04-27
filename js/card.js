@@ -4,6 +4,8 @@ const Allcards = document.querySelectorAll('.cards');
 const dropzone = document.querySelectorAll('.card_zone');
 const AllnumberCards = document.querySelectorAll('.number_card');
 
+
+
 let cardCurrent;
 
 const btnAdd = document.querySelector('.icon_add');
@@ -36,27 +38,30 @@ function addCard() {
   </div> 
         `
 
-    document.querySelectorAll('.icon_remove').forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
-    document.querySelectorAll('.edit_card').forEach(btnEdit => btnEdit.addEventListener('click', editCard));
-
-
-
     const cards = document.querySelectorAll('.card');
+    const iconRemove =  document.querySelectorAll('.icon_remove');
+    const iconEditCard = document.querySelectorAll('.edit_card')
+
+    iconRemove.forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
+    iconEditCard.forEach(btnEdit => btnEdit.addEventListener('click', editCard));
+
     cards.forEach(card => {
         card.addEventListener('dragstart', dragstart);
         card.addEventListener('dragend', dragend);
-    })
 
+    })
     indexZone();
+
+
 }
 
 function dragstart(e) {
-    dropzone.forEach(dropzone => dropzone.classList.add('active'));
+    dropzone.forEach(dropzone => addClassList(dropzone,'active'));
     cardCurrent = e.target;
 }
 
 function dragend() {
-    dropzone.forEach(dropzone => dropzone.classList.remove('active'));
+    dropzone.forEach(dropzone => removeClassList(dropzone,'active'));
 
 }
 
@@ -66,14 +71,14 @@ dropzone.forEach(dropzone => {
 })
 
 function dragover() {
-    this.classList.add('over');
     const zones = document.querySelectorAll('.cards');
     this.appendChild(cardCurrent);
-
+    addClassList(this, 'over');
     indexZone();
+
 }
 function dragleave() {
-    this.classList.remove('over');
+    removeClassList(this,'over')
 }
 
 function editCard(e) {
@@ -82,46 +87,44 @@ function editCard(e) {
     const textarea = clickedCard.querySelector('textarea');
     const btnTextEdit = clickedCard.querySelector('#text_btnEdit');
 
-    function setAttribute() {
-        inputTitle.setAttribute('readonly', true);
-        textarea.setAttribute('readonly', true);
+    function removeAttribute(){
+        inputTitle.removeAttribute('readonly',);
+        textarea.removeAttribute('readonly',);
     }
-    function removeAttribute() {
-        inputTitle.removeAttribute('readonly');
-        textarea.removeAttribute('readonly');
-    }
-    function addClassList() {
-        inputTitle.classList.add('active');
-        textarea.classList.add('active');
-    }
-    function removeClassList() {
-        inputTitle.classList.remove('active');
-        textarea.classList.remove('active');
+    function setAttribute(){
+        inputTitle.setAttribute('readonly',true);
+        textarea.setAttribute('readonly',true);
     }
 
     if (inputTitle.readOnly === true) {
         removeAttribute();
-        addClassList();
+        addClassList(inputTitle,'active');
+        addClassList(textarea, 'active');
         btnTextEdit.innerHTML = 'Save';
 
     } else {
         setAttribute();
-        removeClassList();
+        removeClassList(inputTitle, 'active');
+        removeClassList(textarea, 'active');
         btnTextEdit.innerHTML = 'Edit';
     }
 
 }
 
-
 function removeCard() {
     this.parentNode.parentNode.remove();
     indexZone();
 }
-
 function indexZone() {
     dropzone.forEach((zone, index) => {
         AllnumberCards[index].innerHTML = zone.children.length;
     })
+}
 
+function addClassList(element, className){
+    element.classList.add(className);
+}
+function removeClassList(element, className){
+    element.classList.remove(className);
 }
 

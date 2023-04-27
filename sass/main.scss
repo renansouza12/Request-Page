@@ -1,42 +1,44 @@
 @use 'base';
 
-body{
+body {
     background-color: base.$backgroundColor ;
-
+    transition: all 0.5s;
 }
-.header{
+
+.header {
     padding: 1rem;
     border-bottom: 1px solid base.$dark-gray;
     display: flex;
     justify-content: space-between;
-    .title{
+
+
+    .title {
         display: flex;
         gap: 1rem;
-            
-        #title{
-            transition:  all 1s;
+
+
+        #title {
+            transition: all 1s;
             border-radius: 0.2rem;
-        }
-        #title.active{
-            
-            background-color: base.$white;
-        }
-
-        h1{
-            color: base.$text;
             padding: 0.5rem 1rem;
+            color: base.$text;
         }
 
-        .icon_edit{
-            svg{
-                color: base.$text;
-                width: 1rem;    
+        #title.active {
+            background-color: base.$white;
+            animation: maintitle 2s forwards;
+        }
+
+        .icon_edit {
+            svg {
+
+                width: 1rem;
                 cursor: pointer;
 
             }
         }
 
-        .new_title{
+        .new_title {
             display: none;
             position: relative;
             background-color: base.$white;
@@ -47,14 +49,15 @@ body{
             padding: 1rem;
             position: absolute;
             left: 2%;
-            top: 11%;
+            top: 13%;
             z-index: 1;
             animation: smoth 0.3s forwards;
 
-            h3{
-                color: base.$text   ;
+            h3 {
+                color: base.$text ;
             }
-            .input_title{
+
+            .input_title {
                 width: 100%;
                 border: 1px solid base.$black;
                 border-radius: 0.1rem;
@@ -65,19 +68,16 @@ body{
                 padding: 0.2rem 0.5rem;
 
             }
-            .input_title::placeholder{
+
+            .input_title::placeholder {
                 color: base.$black;
                 opacity: 0.4;
             }
 
-            
-       @keyframes smoth {
-        0%{transform: translateY(-40px);}
-        100%{transform: translateY(0px);}
-       }
-          
+
         }
-        .new_title::after{
+
+        .new_title::after {
             position: absolute;
             content: '';
             top: -0.4rem;
@@ -86,14 +86,16 @@ body{
             width: 0.8rem;
             background-color: base.$white;
             rotate: 45deg;
-        }        
-       .new_title.active{
-        display: block;
-       }
+        }
+
+        .new_title.active {
+            display: block;
+        }
 
     }
-    .dark_mode{
-        .toggle{
+
+    .dark_mode {
+        .toggle {
             height: 3rem;
             width: 6rem;
             background: url(/public/day-bg.webp) center/cover;
@@ -101,77 +103,104 @@ body{
             box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
             transition: all 0.5s;
 
-            .indicator{
-                cursor: pointer;   
+            .indicator {
+                cursor: pointer;
                 height: 3rem;
                 width: 3rem;
-                background-color: base.$backgroundColor;
-                border-radius: 50%;
-                transform: scale(0.9) ;
                 transition: all 0.5s;
+
+                .icon_sun {
+                    background-color: transparent;
+                    border-radius: 50%;
+                    scale: 0.8;
+                    animation: sun 2s infinite;
+                    svg {
+
+                        display: block;
+                        color: base.$dark-bg;
+                    }
+                }
+
+                .icon_moon {
+                    svg {
+                        display: none;
+                    }
+
+                }
             }
-            .indicator.active{  
+
+            .indicator.active {
                 transform: scale(0.9) translateX(50px);
-                background-color: #444;
-                
+                background-color: base.$backgroundColor;
+
             }
         }
-        .toggle.active{
+
+        .toggle.active {
             background: url('/public/night-bg.webp') center/cover;
         }
     }
 }
-.main_request{
+
+.main_request {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 0.2rem;
     min-height: 100vh;
-    
-    .request_container{
+
+    .request_container {
         height: 41rem;
         width: 18rem;
         position: relative;
 
-        .request_title{
+        .request_title {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.5rem 1rem;
-            
-            .request_title{
+
+            .request_title {
                 display: flex;
                 align-items: center;
                 gap: 1rem;
 
-                .bar{
+                .bar {
                     height: 0.5rem;
                     width: 1.5rem;
                     background-color: base.$black;
                     border-radius: 1rem;
                 }
-                .bar_progress{
+
+                .bar_progress {
                     background-color: base.$blue;
                 }
-                .bar_await{
+
+                .bar_await {
                     background-color: base.$yellow;
                 }
-                .bar_done{
-                    background-color:  base.$green;
+
+                .bar_done {
+                    background-color: base.$green;
                 }
-                .bar_closed{
+
+                .bar_closed {
                     background-color: base.$Light-gray;
                 }
-                h3{
-                    color: base.$text;
+
+                h3 {
+
                     font-weight: 500;
                 }
-                .number_card{
+
+                .number_card {
                     opacity: 0.4;
                     user-select: none;
                 }
-              
+
             }
-            .icon_add{
+
+            .icon_add {
                 background-color: base.$purple ;
                 border-radius: 0.2rem;
                 height: 1.4rem;
@@ -179,14 +208,15 @@ body{
                 display: grid;
                 place-content: center;
 
-                svg{
+                svg {
                     width: 1.3rem;
                     cursor: pointer;
                     color: base.$white;
                 }
             }
         }
-        .card_zone{
+
+        .card_zone {
             min-height: 35%;
             overflow: hidden;
             transition: all 0.5s;
@@ -199,72 +229,73 @@ body{
             padding: 1rem;
 
 
-            .card{
+            .card {
                 background-color: base.$white;
                 height: 13rem;
                 width: 90%;
                 border-radius: 0.2rem;
                 padding: 0.5rem;
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+                flex: 1 1 150px;
                 position: relative;
-                user-select: none;
 
-                .card_header{
+
+                .card_header {
                     display: flex;
                     justify-content: space-between;
-                    
-                    
-                    .title_card{
+
+
+                    .title_card {
                         cursor: not-allowed;
-                        color: base.$text;
                         outline: none;
                         font-size: 1rem;
                         width: 100%;
                         padding: 0.5rem;
-                        transition: all 0.5s;
                         user-select: none;
-                    
-                    }
-                    .title_card.active{
-                        cursor: default;
-                        animation: title 2s 1s forwards;
-                        color: base.$white;
+
                     }
 
-                    .icon_remove{
+                    .title_card.active {
+                        cursor: default;
+                        animation: title 2s forwards;
+
+                    }
+
+                    .icon_remove {
                         display: grid;
                         place-content: center;
-    
-                        svg{
-                            width: 1.3rem;
+
+                        svg {
                             color: base.$black;
+                            width: 1.3rem;
                             cursor: pointer;
                         }
                     }
                 }
-                #card_area{
-                    
-                    cursor:not-allowed;
+
+                #card_area {
+                    cursor: not-allowed;
                     padding: 0 0.5rem;
                     margin-top: 0.4rem;
                     outline: none;
                     resize: none;
                     width: 100%;
                     height: 60%;
-                   
-                    
+                    background-color: transparent;
+
                 }
-                #card_area.active{
-                    color: base.$white;
+
+                #card_area.active {
+                    cursor: default;
                     animation: area 2s forwards;
                 }
-              
-                .edit_card{
+
+                .edit_card {
                     display: flex;
                     justify-content: flex-end;
                     align-items: center;
 
-                    .edit{
+                    .edit {
                         cursor: pointer;
                         display: flex;
                         justify-content: center;
@@ -274,70 +305,298 @@ body{
                         padding: 0.5rem;
                         border-radius: 1rem;
 
-                        svg
-                        {
+                        svg {
                             width: 1rem;
                         }
-                        span{
+
+                        span {
                             margin-left: 0.5rem;
                             letter-spacing: 1px;
                         }
                     }
-                   
+
                 }
-               
+
             }
-            @keyframes title {
-                0%{
-                    clip-path: 
-                    circle(0%);
-                }
-                100%{
-                    background-color: base.$dark-gray;
-                    clip-path: circle(100%);
-                }
-               
-               
-            }
-            @keyframes area {
-                0%{
-                    clip-path: 
-                    circle(0%);
-                }
-                100%{
-                    background-color: base.$dark-gray;
-                    clip-path: circle(100% at 40% 100%);
-                }
-               
-               
-            }
+
+
         }
+
         ::-webkit-scrollbar {
             width: 10px;
             height: 100%;
-            
-          }
-          ::-webkit-scrollbar-track {
+
+        }
+
+        ::-webkit-scrollbar-track {
             border-radius: 1rem;
             background-color: base.$white;
-            
-          }
-          ::-webkit-scrollbar-thumb {
+
+        }
+
+        ::-webkit-scrollbar-thumb {
             background: base.$Light-gray;
             border-radius: 5px;
-          }
+        }
 
 
-       .card_zone.active{
-        background-color: base.$red;
-        opacity: 0.5;
-       } 
-       .card_zone.over{
-        background-color: base.$green;
-       }          
+        .card_zone.active {
+            background-color: base.$red;
+            opacity: 0.5;
+        }
+
+        .card_zone.over {
+            background-color: base.$green;
+        }
 
     }
-    
-    
-  
+    @keyframes maintitle {
+        0% {
+            clip-path:
+                circle(10%);
+
+        }
+
+        50% {
+            background-color: #DCD7C9;
+            clip-path: circle(100%);
+        }
+
+        80% {
+            background-color: #DCD7C9;
+            border-radius: 1rem;
+            clip-path: circle(50% at);
+        }
+
+        100% {
+            background-color: transparent;
+            border-radius: 0.3rem;
+            clip-path: circle(0% at);
+        }
+    }
+
+    @keyframes title {
+        0% {
+            clip-path:
+                circle(10%);
+        }
+
+        50% {
+            background-color: base.$highlight;
+            clip-path: circle(100%);
+        }
+
+        100% {
+            border-radius: 1rem;
+            clip-path: circle(0% at);
+        }
+    }
+    @keyframes sun {
+        0%{transform: rotate(0turn);}
+        100%{transform: rotate(1turn);}
+    }
+    @keyframes area {
+        0% {
+            clip-path:
+                circle(10%);
+        }
+
+        50% {
+            background-color: base.$highlight;
+            clip-path: circle(100%);
+        }
+
+        100% {
+            border-radius: 1rem;
+            clip-path: circle(0% at);
+        }
+    }
+
+    @keyframes smoth {
+        0% {
+            transform: translateY(-40px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+}
+
+//dark Theme
+
+
+.dark {
+    background-color: base.$dark-bg;
+    color: base.$dark-text;
+
+    .header {
+        .title {
+            #title {
+                color: base.$white;
+            }
+
+            #title.active {
+                animation: darkTheme_maintitle 2s forwards;
+            }
+        }
+
+        .new_title {
+            background-color: base.$dark-bg-card;
+
+            h3 {
+                color: base.$white;
+            }
+
+            .input_title {
+                background-color: base.$dark-highlight;
+                color: base.$white;
+            }
+
+            .input_title::placeholder {
+                color: base.$white;
+                opacity: 0.8;
+            }
+        }
+
+        .new_title::after {
+            background-color: base.$dark-bg-card;
+        }
+
+        .dark_mode {
+            .toggle {
+                .indicator {
+                    background-color: transparent;
+
+                    .icon_sun {
+                        svg {
+                            display: none;
+                        }
+
+                    }
+
+                    .icon_moon {
+                        background-color: transparent;
+                        border-radius: 50%;
+                        scale: 0.8;
+
+                        svg {
+                            display: block;
+                            color: base.$white;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    .main_request {
+        .request_container {
+            .card_zone {
+                .card {
+                    background-color: base.$dark-bg-card;
+
+                    .card_header {
+                        .title_card {
+                            background-color: base.$dark-bg-card;
+                            color: base.$white;
+                        }
+
+                        .title_card.active {
+                            animation: darkTheme_title 2s forwards;
+                        }
+
+                        .title_card::placeholder {
+                            color: base.$white;
+                            opacity: 0.8;
+                        }
+
+                        .icon_remove {
+                            svg {
+                                color: base.$white;
+                            }
+                        }
+                    }
+
+                    #card_area {
+                        background-color: base.$dark-bg-card;
+                        color: base.$white;
+                    }
+
+                    #card_area::placeholder {
+                        color: base.$white;
+                        opacity: 0.8;
+                    }
+
+                    #card_area.active {
+                        animation: darkThem_area 2s forwards;
+                    }
+                }
+            }
+        }
+
+        @keyframes darkTheme_maintitle {
+            0% {
+                clip-path:
+                    circle(10%);
+
+            }
+
+            50% {
+                background-color: base.$dark-highlight;
+                clip-path: circle(100%);
+            }
+
+            80% {
+                background-color: base.$dark-highlight;
+                border-radius: 1rem;
+                clip-path: circle(50% at);
+            }
+
+            100% {
+                background-color: transparent;
+                border-radius: 0.3rem;
+                clip-path: circle(0% at);
+            }
+        }
+
+        @keyframes darkTheme_title {
+            0% {
+                clip-path:
+                    circle(10%);
+            }
+
+            50% {
+                background-color: base.$dark-highlight;
+                clip-path: circle(100%);
+            }
+
+            100% {
+                border-radius: 1rem;
+                clip-path: circle(0% at);
+            }
+        }
+
+        @keyframes darkThem_area {
+            0% {
+                clip-path:
+                    circle(10%);
+            }
+
+            50% {
+                background-color: base.$dark-highlight;
+                clip-path: circle(100%);
+            }
+
+            100% {
+                border-radius: 1rem;
+                clip-path: circle(0% at);
+            }
+        }
+    }
+
+
+
 }

@@ -1,4 +1,3 @@
-
 const numberCard = document.querySelector('.number_card'); 
 const cardContainer =  document.querySelector('.card_zone');
 const Allcards = document.querySelectorAll('.cards');
@@ -57,7 +56,7 @@ function addCard(){
 function dragstart(e){
     dropzone.forEach(dropzone => dropzone.classList.add('active'));
     cardCurrent = e.target;
-    this.style.cursor = 'move'; 
+
 }
 
 function dragend(){
@@ -104,7 +103,7 @@ function editCard(e){
         textarea.classList.remove('active');
         btnTextEdit.innerHTML = 'Edit';
     }
-}   
+}  
 
 function removeCard(){
     this.parentNode.parentNode.remove();

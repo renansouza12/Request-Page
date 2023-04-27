@@ -1,18 +1,18 @@
-const numberCard = document.querySelector('.number_card'); 
-const cardContainer =  document.querySelector('.card_zone');
+const numberCard = document.querySelector('.number_card');
+const cardContainer = document.querySelector('.card_zone');
 const Allcards = document.querySelectorAll('.cards');
 const dropzone = document.querySelectorAll('.card_zone');
 const AllnumberCards = document.querySelectorAll('.number_card');
 
-let cardCurrent ; 
+let cardCurrent;
 
 const btnAdd = document.querySelector('.icon_add');
 btnAdd.addEventListener('click', addCard);
- 
 
-function addCard(){
-      numberCard.innerHTML = cardContainer.children.length;
-    
+
+function addCard() {
+    numberCard.innerHTML = cardContainer.children.length;
+
     cardContainer.innerHTML += `
     <div class="card" draggable='true' >
         <div class="card_header">
@@ -34,84 +34,94 @@ function addCard(){
       
     </div>
   </div> 
-        `   
-        dropzone.forEach((zone, index)=>{
-            AllnumberCards[index].innerHTML = zone.children.length;
-        })
-   
+        `
 
     document.querySelectorAll('.icon_remove').forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
-    document.querySelectorAll('.edit_card').forEach(btnEdit => btnEdit.addEventListener('click',editCard));
-    
-   
-    
+    document.querySelectorAll('.edit_card').forEach(btnEdit => btnEdit.addEventListener('click', editCard));
+
+
+
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
-        card.addEventListener('dragstart',dragstart);
+        card.addEventListener('dragstart', dragstart);
         card.addEventListener('dragend', dragend);
     })
 
-}   
+    indexZone();
+}
 
-function dragstart(e){
+function dragstart(e) {
     dropzone.forEach(dropzone => dropzone.classList.add('active'));
     cardCurrent = e.target;
+}
+
+function dragend() {
+    dropzone.forEach(dropzone => dropzone.classList.remove('active'));
 
 }
 
-function dragend(){
-     dropzone.forEach(dropzone => dropzone.classList.remove('active'));
-    
-}
-
-dropzone.forEach(dropzone =>{
-    dropzone.addEventListener('dragover',dragover);
-    dropzone.addEventListener('dragleave',dragleave);
+dropzone.forEach(dropzone => {
+    dropzone.addEventListener('dragover', dragover);
+    dropzone.addEventListener('dragleave', dragleave);
 })
 
-function dragover(){
+function dragover() {
     this.classList.add('over');
     const zones = document.querySelectorAll('.cards');
     this.appendChild(cardCurrent);
-    
-    dropzone.forEach((zone, index)=>{
-        AllnumberCards[index].innerHTML = zone.children.length;
-    })
+
+    indexZone();
 }
-function dragleave(){
+function dragleave() {
     this.classList.remove('over');
 }
 
-function editCard(e){
+function editCard(e) {
     const clickedCard = e.target.closest('.card');
     const inputTitle = clickedCard.querySelector('.title_card');
     const textarea = clickedCard.querySelector('textarea');
     const btnTextEdit = clickedCard.querySelector('#text_btnEdit');
 
-    textarea.removeAttribute('readonly');
-    if(inputTitle.readOnly === true){
+    function setAttribute() {
+        inputTitle.setAttribute('readonly', true);
+        textarea.setAttribute('readonly', true);
+    }
+    function removeAttribute() {
         inputTitle.removeAttribute('readonly');
         textarea.removeAttribute('readonly');
+    }
+    function addClassList() {
         inputTitle.classList.add('active');
         textarea.classList.add('active');
-        btnTextEdit.innerHTML = 'Save';
-
-    }else{
-        inputTitle.setAttribute('readonly',true);
-        textarea.setAttribute('readonly',true);
+    }
+    function removeClassList() {
         inputTitle.classList.remove('active');
         textarea.classList.remove('active');
+    }
+
+    if (inputTitle.readOnly === true) {
+        removeAttribute();
+        addClassList();
+        btnTextEdit.innerHTML = 'Save';
+
+    } else {
+        setAttribute();
+        removeClassList();
         btnTextEdit.innerHTML = 'Edit';
     }
-}  
 
-function removeCard(){
+}
+
+
+function removeCard() {
     this.parentNode.parentNode.remove();
-    
-    dropzone.forEach((zone, index)=>{
+    indexZone();
+}
+
+function indexZone() {
+    dropzone.forEach((zone, index) => {
         AllnumberCards[index].innerHTML = zone.children.length;
     })
 
 }
-
 

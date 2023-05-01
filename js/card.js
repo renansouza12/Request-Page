@@ -4,13 +4,10 @@ const Allcards = document.querySelectorAll('.cards');
 const dropzone = document.querySelectorAll('.card_zone');
 const AllnumberCards = document.querySelectorAll('.number_card');
 
-
-
 let cardCurrent;
 
 const btnAdd = document.querySelector('.icon_add');
 btnAdd.addEventListener('click', addCard);
-
 
 function addCard() {
     numberCard.innerHTML = cardContainer.children.length;
@@ -41,41 +38,40 @@ function addCard() {
     const cards = document.querySelectorAll('.card');
     const iconRemove =  document.querySelectorAll('.icon_remove');
     const iconEditCard = document.querySelectorAll('.edit_card')
-
-    iconRemove.forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
-    iconEditCard.forEach(btnEdit => btnEdit.addEventListener('click', editCard));
-
+    
     cards.forEach(card => {
         card.addEventListener('dragstart', dragstart);
         card.addEventListener('dragend', dragend);
 
     })
+
+    iconRemove.forEach(btn_delet => btn_delet.addEventListener('click', removeCard));
+    iconEditCard.forEach(btnEdit => btnEdit.addEventListener('click', editCard));
+
     indexZone();
-
-
 }
 
 function dragstart(e) {
+    const savedCards = JSON.parse(localStorage.getItem('myCards'));
     dropzone.forEach(dropzone => addClassList(dropzone,'active'));
     cardCurrent = e.target;
+    
 }
 
 function dragend() {
     dropzone.forEach(dropzone => removeClassList(dropzone,'active'));
-
 }
 
 dropzone.forEach(dropzone => {
     dropzone.addEventListener('dragover', dragover);
     dropzone.addEventListener('dragleave', dragleave);
+    
 })
 
 function dragover() {
-    const zones = document.querySelectorAll('.cards');
-    this.appendChild(cardCurrent);
+    this.appendChild(cardCurrent)
     addClassList(this, 'over');
     indexZone();
-
 }
 function dragleave() {
     removeClassList(this,'over')
@@ -116,7 +112,7 @@ function removeCard() {
     indexZone();
 }
 function indexZone() {
-    dropzone.forEach((zone, index) => {
+    dropzone.forEach((zone, index) => { 
         AllnumberCards[index].innerHTML = zone.children.length;
     })
 }
@@ -127,4 +123,3 @@ function addClassList(element, className){
 function removeClassList(element, className){
     element.classList.remove(className);
 }
-

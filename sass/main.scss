@@ -98,7 +98,7 @@ body {
         .toggle {
             height: 3rem;
             width: 6rem;
-            background: url(/public/day-bg.webp) center/cover;
+            background: url('/public/image/day-bg.webp') center/cover;
             border-radius: 2rem;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
             transition: all 0.5s;
@@ -137,7 +137,7 @@ body {
         }
 
         .toggle.active {
-            background: url('/public/night-bg.webp') center/cover;
+            background: url('/public/image/night-bg.webp') center/cover;
         }
     }
 }

@@ -84,7 +84,7 @@ body {
 .header .dark_mode .toggle {
   height: 3rem;
   width: 6rem;
-  background: url(/public/day.jpg) center/cover;
+  background: url(../public/day.jpg) center/cover;
   border-radius: 2rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   transition: all 0.5s;
@@ -113,7 +113,7 @@ body {
   background-color: #f0efeb;
 }
 .header .dark_mode .toggle.active {
-  background: url(/public/night.jpg) center/cover;
+  background: url(../public/night.jpg) center/cover;
 }
 
 .main_request {

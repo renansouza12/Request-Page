@@ -16,4 +16,20 @@
 **Front-end:** [![My Skills](https://skillicons.dev/icons?i=vite,js,html,sass)](https://skillicons.dev)
 
 
+## How run the project
+
+Run Request page with npm
+
+```bash
+git clone https://github.com/renansouza12/Request-Page.git
+
+cd Request-Page
+
+npm install
+
+npm run build
+```
+    
+
+
 

@@ -28,6 +28,8 @@ cd Request-Page
 npm install
 
 npm run build
+
+npm run dev
 ```
 
 Install Sass 

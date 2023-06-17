@@ -29,7 +29,20 @@ npm install
 
 npm run build
 ```
-    
+
+Install Sass 
+
+```bash
+npm install -g sass
+```
+
+Create a folder with name sass
+
+and run  this 
+
+```bash
+sass --watch sass/main.scss:css/styles.css
+```
 
 
 
